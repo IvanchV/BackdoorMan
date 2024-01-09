@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python2
 # -*-coding: utf-8 -*-
 
 # +==================+
@@ -403,8 +403,8 @@ class Initialize:
 	def isNetworkReachable(self):
 		try:
 			# Google's IP address.
-			host, _, addrList = socket.gethostbyaddr('216.58.192.142')
-			s = socket.create_connection((addrList[0], 80), 2)
+			host, _, addrList = socket.gethostbyaddr('8.8.8.8')
+			s = socket.create_connection((addrList[0], 443), 2)
 			return True
 		except:
 			return False
@@ -474,7 +474,7 @@ class Servicer:
 		if apikey == '':
 			return False
 		try:
-			r = requests.post('http://www.unphp.net/api/v2/post', files={
+			r = requests.post('https://www.unphp.net/api/v2/post', files={
 				'file':self.file}, data={'api_key':apikey})
 			data = r.json()
 			if data['result'] == 'error':
